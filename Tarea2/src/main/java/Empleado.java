@@ -20,19 +20,17 @@ public class Empleado implements Invitable {
     }
 
     public Reunion organizarReunion(int tipo, Date fecha, Instant hora, Duration duracion, String location){
-
         switch(tipo){
-
             case 0:
-                return new ReunionPresencial(fecha, hora, duracion, location);
-
+                return new ReunionPresencial(fecha, hora, duracion, this, location);
             case 1:
-                return new ReunionVirtual(fecha, hora, duracion, location);
-
+                return new ReunionVirtual(fecha, hora, duracion, this, location);
             default:
                 return null;
-
-
         }
+    }
+
+    public String getNombre() {
+        return nombre;
     }
 }

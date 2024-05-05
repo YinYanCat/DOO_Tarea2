@@ -6,6 +6,7 @@ public class Departamento implements Invitable {
 
     public Departamento(String nombre) {
         this.nombre = nombre;
+        listaEmpleados = new ArrayList<>();
     }
     public void contratar(Empleado empleado) {
         listaEmpleados.add(empleado);
