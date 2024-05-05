@@ -10,6 +10,11 @@ public abstract class Reunion {
     private Instant horaInicio;
     private Instant horaFin;
 
+    public Reunion(Date fecha, Instant hora, Duration duracion) {
+        this.fecha = fecha;
+        horaPrevista = hora;
+        duracionPrevista = duracion;
+    }
 
     public ArrayList<Empleado> obtenerAsistencias(){
         return null;
@@ -27,10 +32,13 @@ public abstract class Reunion {
         return 0;
     }
     public float calcularTiempoReal(){
-        return 0;
+        float tiempoReal = horaFin.getEpochSecond() - horaInicio.getEpochSecond();
+        return tiempoReal;
     }
-
-    public void iniciar(){}
-
-    public void finalizar(){}
+    public void iniciar() {
+        horaInicio = Instant.now();
+    }
+    public void finalizar() {
+        horaFin = Instant.now();
+    }
 }
