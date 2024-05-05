@@ -10,7 +10,8 @@ public abstract class Reunion {
     private Instant horaInicio;
     private Instant horaFin;
     private Invitacion invitacion;
-    private ArrayList<Asistencia> asistencia;
+    private ArrayList<Asistencia> listaAsistencia;
+    private ArrayList<Asistencia> listaRetrasos;
     private Empleado organizador;
 
     public Reunion(Date fecha, Instant hora, Duration duracion, Empleado org) {
@@ -22,17 +23,21 @@ public abstract class Reunion {
         invitacion = new Invitacion(hora);
     }
     public ArrayList<Empleado> obtenerAsistencias(){
-        ArrayList listaAsistencias = new ArrayList<Empleado>();
-        for(int i=0; i<asistencia.size(); i++) {
-            listaAsistencias.add(asistencia.get(i).getAsistente());
+        ArrayList asistentes = new ArrayList<Empleado>();
+        for(int i=0; i<listaAsistencia.size(); i++) {
+            asistentes.add(listaAsistencia.get(i).getAsistente());
         }
-        return listaAsistencias;
+        return asistentes;
     }
     public ArrayList<Empleado> obtenerAusencias(){
         return null;
     }
     public ArrayList<Empleado> obtenerRetrasos(){
-        return null;
+        ArrayList retrasos = new ArrayList<Empleado>();
+        for(int i=0; i<listaRetrasos.size(); i++) {
+            retrasos.add(listaRetrasos.get(i).getAsistente());
+        }
+        return retrasos;
     }
     public int obtenerTotalAsistencia(){
         return 0;
@@ -60,10 +65,11 @@ public abstract class Reunion {
     }
     public void llegada(Empleado asistente) {
         if(horaInicio == null) {
-            asistencia.add(new Asistencia(asistente));
+            listaAsistencia.add(new Asistencia(asistente));
         } else {
-            asistencia.add(new Retraso(asistente, Instant.now()));
+            Instant horaActual = Instant.now();
+            listaAsistencia.add(new Retraso(asistente,horaActual));
+            listaRetrasos.add(new Retraso(asistente, horaActual));
         }
-
     }
 }
