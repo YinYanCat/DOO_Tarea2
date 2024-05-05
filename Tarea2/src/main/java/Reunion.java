@@ -1,5 +1,6 @@
 import java.time.Duration;
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -11,13 +12,13 @@ public abstract class Reunion {
     private Instant horaFin;
 
 
-    public List obtenerAsistencias(){
+    public ArrayList<Empleado> obtenerAsistencias(){
         return null;
     }
-    public List obtenerAusencias(){
+    public ArrayList<Empleado> obtenerAusencias(){
         return null;
     }
-    public List obtenerRetrasos(){
+    public ArrayList<Empleado> obtenerRetrasos(){
         return null;
     }
     public int obtenerTotalAsistencia(){
