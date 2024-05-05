@@ -14,6 +14,8 @@ public abstract class Reunion {
         this.fecha = fecha;
         horaPrevista = hora;
         duracionPrevista = duracion;
+        horaFin=null;
+        horaInicio=null;
     }
 
     public ArrayList<Empleado> obtenerAsistencias(){
@@ -32,7 +34,12 @@ public abstract class Reunion {
         return 0;
     }
     public float calcularTiempoReal(){
-        float tiempoReal = horaFin.getEpochSecond() - horaInicio.getEpochSecond();
+        float tiempoReal;
+        if(horaFin==null){
+            tiempoReal = horaInicio.compareTo(Instant.now());
+        }else{
+            tiempoReal = horaInicio.compareTo(horaFin);
+        }
         return tiempoReal;
     }
     public void iniciar() {

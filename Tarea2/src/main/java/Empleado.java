@@ -1,3 +1,7 @@
+import java.time.Duration;
+import java.time.Instant;
+import java.util.Date;
+
 public class Empleado implements Invitable {
     private String id;
     private String apellidos;
@@ -13,5 +17,22 @@ public class Empleado implements Invitable {
 
     public void invitar(Invitacion invitacion) {
         invitacion.agregarInvitado(this);
+    }
+
+    public Reunion organizarReunion(int tipo, Date fecha, Instant hora, Duration duracion, String location){
+
+        switch(tipo){
+
+            case 0:
+                return new ReunionPresencial(fecha, hora, duracion, location);
+
+            case 1:
+                return new ReunionVirtual(fecha, hora, duracion, location);
+
+            default:
+                return null;
+
+
+        }
     }
 }
