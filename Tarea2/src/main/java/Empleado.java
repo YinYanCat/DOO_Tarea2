@@ -4,7 +4,7 @@ public class Empleado implements Invitable {
     private String nombre;
     private String correo;
 
-    public void invitar(){
-
+    public void invitar(Invitacion invitacion) {
+        invitacion.agregarInvitado(this);
     }
 }

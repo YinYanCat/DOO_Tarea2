@@ -2,7 +2,6 @@ import java.time.Duration;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 public abstract class Reunion {
     private Date fecha;
