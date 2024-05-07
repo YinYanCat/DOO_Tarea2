@@ -19,9 +19,9 @@ public class Main {
         d2.contratar(e2);
         d2.contratar(e4);
 
-        Reunion r1 = e4.organizarReunion(1, new Date() ,Instant.now(), Duration.ofHours(1), "www.reunion.com");
+        Reunion r1 = new ReunionPresencial(new Date() ,Instant.now(), Duration.ofHours(1), e1, "www.reunion.com");
         Invitacion inv = r1.getInvitacion();
-        e1.invitar(inv);
+        e2.invitar(inv);
         d2.invitar(inv);
     }
 }

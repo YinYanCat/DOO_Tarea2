@@ -10,8 +10,8 @@ public abstract class Reunion {
     private Instant horaInicio;
     private Instant horaFin;
     private Invitacion invitacion;
-    private ArrayList<Asistencia> listaAsistencia;
-    private ArrayList<Asistencia> listaRetrasos;
+    private Asistencia asistencias;
+    private Retraso retrasos;
     private Empleado organizador;
 
     public Reunion(Date fecha, Instant hora, Duration duracion, Empleado org) {
@@ -21,23 +21,17 @@ public abstract class Reunion {
         horaFin=null;
         horaInicio=null;
         invitacion = new Invitacion(hora);
+        asistencias = new Asistencia();
+        retrasos = new Retraso();
     }
     public ArrayList<Empleado> obtenerAsistencias(){
-        ArrayList asistentes = new ArrayList<Empleado>();
-        for(int i=0; i<listaAsistencia.size(); i++) {
-            asistentes.add(listaAsistencia.get(i).getAsistente());
-        }
-        return asistentes;
+        return asistencias.getAsistencia();
     }
     public ArrayList<Empleado> obtenerAusencias(){
-        return null;
+        return invitacion.getAusencia(asistencias.getAsistencia());
     }
     public ArrayList<Empleado> obtenerRetrasos(){
-        ArrayList retrasos = new ArrayList<Empleado>();
-        for(int i=0; i<listaRetrasos.size(); i++) {
-            retrasos.add(listaRetrasos.get(i).getAsistente());
-        }
-        return retrasos;
+        return retrasos.getAsistencia();
     }
     public int obtenerTotalAsistencia(){
         return 0;
@@ -65,11 +59,10 @@ public abstract class Reunion {
     }
     public void llegada(Empleado asistente) {
         if(horaInicio == null) {
-            listaAsistencia.add(new Asistencia(asistente));
+            asistencias.addAsistente(asistente);
         } else {
-            Instant horaActual = Instant.now();
-            listaAsistencia.add(new Retraso(asistente,horaActual));
-            listaRetrasos.add(new Retraso(asistente, horaActual));
+            retrasos.addAsistente(asistente);
+            retrasos.addHora(Instant.now());
         }
     }
 }

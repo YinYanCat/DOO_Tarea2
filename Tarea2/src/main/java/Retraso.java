@@ -1,8 +1,14 @@
+import java.lang.reflect.Array;
 import java.time.Instant;
+import java.util.ArrayList;
 
 public class Retraso extends Asistencia {
-    private Instant hora;
-    public Retraso(Empleado asistente, Instant hora) {
-        super(asistente);
+    private ArrayList<Instant> horas;
+    public Retraso() {
+        super();
+        horas = new ArrayList<>();
+    }
+    public void addHora(Instant hora) {
+        horas.add(hora);
     }
 }

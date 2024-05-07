@@ -14,22 +14,9 @@ public class Empleado implements Invitable {
         this.nombre = nombre;
         this.apellidos = ape;
     }
-
     public void invitar(Invitacion invitacion) {
         invitacion.agregarInvitado(this);
     }
-
-    public Reunion organizarReunion(int tipo, Date fecha, Instant hora, Duration duracion, String location){
-        switch(tipo){
-            case 0:
-                return new ReunionPresencial(fecha, hora, duracion, this, location);
-            case 1:
-                return new ReunionVirtual(fecha, hora, duracion, this, location);
-            default:
-                return null;
-        }
-    }
-
     public String getNombre() {
         return nombre;
     }
