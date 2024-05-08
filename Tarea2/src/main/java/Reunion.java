@@ -34,10 +34,10 @@ public abstract class Reunion {
         return retrasos.getAsistencia();
     }
     public int obtenerTotalAsistencia(){
-        return 0;
+        return asistencias.getTotalAsistencia();
     }
     public float obtenerPorcentajeAsistencia(){
-        return 0;
+        return invitacion.getPorcentajeAsistencia(asistencias);
     }
     public float calcularTiempoReal(){
         float tiempoReal;
@@ -58,9 +58,8 @@ public abstract class Reunion {
         return invitacion;
     }
     public void llegada(Empleado asistente) {
-        if(horaInicio == null) {
-            asistencias.addAsistente(asistente);
-        } else {
+        asistencias.addAsistente(asistente);
+        if(horaInicio != null) {
             retrasos.addAsistente(asistente);
             retrasos.addHora(Instant.now());
         }

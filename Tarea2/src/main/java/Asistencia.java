@@ -12,4 +12,7 @@ public class Asistencia {
     public ArrayList<Empleado> getAsistencia() {
         return listaAsistencia;
     }
+    public int getTotalAsistencia() {
+        return listaAsistencia.size();
+    }
 }
