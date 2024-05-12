@@ -20,7 +20,10 @@ public class Informacion {
     public void printNombresAsistentes(ArrayList<Asistencia> listaAsistencia, String str) {
         System.out.print(str);
         for (int i = 0; i < listaAsistencia.size(); i++) {
-            System.out.print(", "+listaAsistencia.get(i).getEmpleado().getNombre());
+            System.out.print(" " + listaAsistencia.get(i).getEmpleado().getNombre());
+            if(i!= listaAsistencia.size()-1){
+                System.out.print(",");
+            }
         }
         System.out.println();
     }
@@ -28,7 +31,10 @@ public class Informacion {
     public void printNombresInvitados(ArrayList<Invitacion> listaInvitados, String str) {
         System.out.print(str);
         for (int i = 0; i < listaInvitados.size(); i++) {
-            System.out.print(", "+listaInvitados.get(i).getEmpleado().getNombre());
+            System.out.print(" "+listaInvitados.get(i).getEmpleado().getNombre());
+            if(i!= listaInvitados.size()-1){
+                System.out.print(",");
+            }
         }
         System.out.println();
     }

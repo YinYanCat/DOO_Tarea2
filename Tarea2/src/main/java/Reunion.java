@@ -9,11 +9,15 @@ public abstract class Reunion {
     private Duration duracionPrevista;
     private Instant horaInicio;
     private Instant horaFin;
+    private Nota notaReunion;
+    private tipoReunion tipo;
     private ArrayList<Invitacion> listaInvitacion;
     private ArrayList<Asistencia> listaAsistencia;
     private Empleado organizador;
 
-    public Reunion(Date fecha, Instant hora, Duration duracion, Empleado org) {
+    public Reunion(Date fecha, Instant hora, Duration duracion, Empleado org, tipoReunion miTipo) {
+        notaReunion=new Nota();
+        tipo=miTipo;
         this.fecha = fecha;
         horaPrevista = hora;
         duracionPrevista = duracion;

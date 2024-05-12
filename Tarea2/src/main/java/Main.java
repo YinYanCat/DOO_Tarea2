@@ -20,17 +20,18 @@ public class Main {
         d2.contratar(e3);
         d2.contratar(e4);
 
-        Reunion r1 = new ReunionPresencial(new Date(), Instant.now(), Duration.ofHours(1), e1, "www.reunion.com");
+        Reunion r1 = new ReunionPresencial(new Date(), Instant.now(), Duration.ofHours(1), e1, tipoReunion.TECNICA, "www.reunion.com");
         e2.invitar(r1);
         d2.invitar(r1);
         cnv.printRegistroReunion(r1);
         r1.llegada(e2);
         cnv.printRegistroReunion(r1);
-        r1.llegada(e3);
+
         cnv.printRegistroReunion(r1);
         r1.iniciar();
         cnv.printRegistroReunion(r1);
         r1.llegada(e4);
+        r1.llegada(e3);
         cnv.printRegistroReunion(r1);
         r1.finalizar();
     }
