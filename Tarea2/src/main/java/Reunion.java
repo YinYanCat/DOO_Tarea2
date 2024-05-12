@@ -69,6 +69,10 @@ public abstract class Reunion {
         listaInvitacion.add(invitado);
     }
     public void llegada(Empleado asistente) {
+
+        //to-do:
+        // Bloquear a asistentes no invitados
+
         for(int i=0; i<listaInvitacion.size(); i++) {
             if(listaInvitacion.get(i).getEmpleado() == asistente) {
                 listaInvitacion.remove(i);
