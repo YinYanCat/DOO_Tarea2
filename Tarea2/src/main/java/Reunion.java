@@ -9,9 +9,8 @@ public abstract class Reunion {
     private Duration duracionPrevista;
     private Instant horaInicio;
     private Instant horaFin;
-    private Invitacion invitacion;
-    private Asistencia asistencias;
-    private Retraso retrasos;
+    private ArrayList<Invitacion> listaInvitacion;
+    private ArrayList<Asistencia> listaAsistencia;
     private Empleado organizador;
 
     public Reunion(Date fecha, Instant hora, Duration duracion, Empleado org) {
@@ -20,24 +19,31 @@ public abstract class Reunion {
         duracionPrevista = duracion;
         horaFin=null;
         horaInicio=null;
-        invitacion = new Invitacion(hora);
-        asistencias = new Asistencia();
-        retrasos = new Retraso();
+        listaInvitacion = new ArrayList<>();
+        listaAsistencia = new ArrayList<>();
     }
-    public ArrayList<Empleado> obtenerAsistencias(){
-        return asistencias.getAsistencia();
+    public ArrayList<Asistencia> obtenerAsistencias() {
+        return listaAsistencia;
     }
-    public ArrayList<Empleado> obtenerAusencias(){
-        return invitacion.getAusencia(asistencias.getAsistencia());
+    public ArrayList<Invitacion> obtenerAusencias() {
+        return listaInvitacion;
     }
-    public ArrayList<Empleado> obtenerRetrasos(){
-        return retrasos.getAsistencia();
+    public ArrayList<Asistencia> obtenerRetrasos() {
+        ArrayList<Asistencia> listaRetraso= new ArrayList<>();
+        for(int i=0; i<listaAsistencia.size(); i++) {
+            if(listaAsistencia.get(i).getClass() == Retraso.class) {
+                listaRetraso.add(listaAsistencia.get(i));
+            }
+        }
+        return listaRetraso;
     }
-    public int obtenerTotalAsistencia(){
-        return asistencias.getTotalAsistencia();
+    public int obtenerTotalAsistencia() {
+        return listaAsistencia.size();
     }
-    public float obtenerPorcentajeAsistencia(){
-        return invitacion.getPorcentajeAsistencia(asistencias);
+    public float obtenerPorcentajeAsistencia() {
+        float cantAsistencia = (float)listaAsistencia.size();
+        float cantInvitacion = (float)listaInvitacion.size()+cantAsistencia;
+        return (cantAsistencia*100)/cantInvitacion;
     }
     public float calcularTiempoReal(){
         float tiempoReal;
@@ -54,14 +60,15 @@ public abstract class Reunion {
     public void finalizar() {
         horaFin = Instant.now();
     }
-    public Invitacion getInvitacion() {
-        return invitacion;
+    public void agregarInvitado(Empleado empleado) {
+        Invitacion invitado = new Invitacion(empleado, Instant.now());
+        listaInvitacion.add(invitado);
     }
     public void llegada(Empleado asistente) {
-        asistencias.addAsistente(asistente);
-        if(horaInicio != null) {
-            retrasos.addAsistente(asistente);
-            retrasos.addHora(Instant.now());
+        for(int i=0; i<listaInvitacion.size(); i++) {
+            if(listaInvitacion.get(i).getEmpleado() == asistente) {
+                listaInvitacion.remove(i);
+            }
         }
     }
 }

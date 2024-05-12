@@ -11,9 +11,9 @@ public class Departamento implements Invitable {
     public void contratar(Empleado empleado) {
         listaEmpleados.add(empleado);
     }
-    public void invitar(Invitacion invitacion) {
+    public void invitar(Reunion reunion) {
         for(int i=0; i<listaEmpleados.size(); i++) {
-            invitacion.agregarInvitado(listaEmpleados.get(i));
+            reunion.agregarInvitado(listaEmpleados.get(i));
         }
     }
     public int obtenerCantidadEmpleados(){

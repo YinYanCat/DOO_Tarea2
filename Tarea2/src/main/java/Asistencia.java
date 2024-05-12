@@ -2,17 +2,11 @@ import java.time.Instant;
 import java.util.ArrayList;
 
 public class Asistencia {
-    private ArrayList<Empleado> listaAsistencia;
-    public Asistencia() {
-        listaAsistencia =  new ArrayList<>();
+    private Empleado asistente;
+    public Asistencia(Empleado invitado) {
+        asistente = invitado;
     }
-    public void addAsistente(Empleado invitado) {
-        listaAsistencia.add(invitado);
-    }
-    public ArrayList<Empleado> getAsistencia() {
-        return listaAsistencia;
-    }
-    public int getTotalAsistencia() {
-        return listaAsistencia.size();
+    public Empleado getEmpleado() {
+        return asistente;
     }
 }
