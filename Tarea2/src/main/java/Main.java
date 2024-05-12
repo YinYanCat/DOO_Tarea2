@@ -5,6 +5,8 @@ import java.util.Date;
 
 public class Main {
     public static void main(String[] args) {
+        Informacion cnv = new Informacion();
+
         Empleado e1 = new Empleado("Juan", "Perez", "1", "jperez@correo.com");
         Empleado e2 = new Empleado("Roberto", "Gomez", "2", "rgomez@correo.com");
         Empleado e3 = new Empleado("Maria", "Toncillo", "3", "mtoncillo@correo.com");
@@ -19,5 +21,17 @@ public class Main {
         d2.contratar(e4);
 
         Reunion r1 = new ReunionPresencial(new Date(), Instant.now(), Duration.ofHours(1), e1, "www.reunion.com");
+        e2.invitar(r1);
+        d2.invitar(r1);
+        cnv.printRegistroReunion(r1);
+        r1.llegada(e2);
+        cnv.printRegistroReunion(r1);
+        r1.llegada(e3);
+        cnv.printRegistroReunion(r1);
+        r1.iniciar();
+        cnv.printRegistroReunion(r1);
+        r1.llegada(e4);
+        cnv.printRegistroReunion(r1);
+        r1.finalizar();
     }
 }

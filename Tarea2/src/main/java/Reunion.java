@@ -70,5 +70,9 @@ public abstract class Reunion {
                 listaInvitacion.remove(i);
             }
         }
+        if(horaInicio == null)
+            listaAsistencia.add(new Asistencia(asistente));
+        else
+            listaAsistencia.add(new Retraso(asistente, Instant.now()));
     }
 }
