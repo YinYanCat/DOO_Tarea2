@@ -58,38 +58,41 @@ public abstract class Reunion {
         }
         return tiempoReal;
     }
-    public void iniciar() {
+    public void iniciar() throws Exception {
+        if(horaInicio != null)
+            throw new HoraYaEstablecidaException("Reunión ya iniciada");
         horaInicio = Instant.now();
     }
-    public void finalizar() {
+    public void finalizar() throws Exception {
+        if(horaInicio != null)
+            throw new HoraYaEstablecidaException("Reunión ya finalizada");
         horaFin = Instant.now();
     }
-    public void agregarInvitado(Empleado empleado) {
+    public void agregarInvitado(Empleado empleado) throws Exception {
+        for(int i=0; i<listaInvitacion.size(); i++) {
+            if(listaInvitacion.get(i).getEmpleado() == empleado)
+                throw new EmpleadoYaInvitadoException("Empleado ya invitado a la reunión");
+        }
         Invitacion invitado = new Invitacion(empleado, Instant.now());
         listaInvitacion.add(invitado);
     }
-    public void llegada(Empleado asistente) throws Exception{
-
-        //to-do:
-        // Bloquear a asistentes no invitados
-
-        for(int i=0; i<listaAsistencia.size(); i++){
-            if(listaAsistencia.get(i).getEmpleado() == asistente){
-                break;
-            }
-            if(i==listaAsistencia.size()-1){
-                throw new asistenteNoInvitadoException("Asistente no Invitado");
-            }
-        }
+    public void llegada(Empleado asistente) throws Exception {
+        if(horaFin != null)
+            throw new AsistenciaDespuesDeFinalizarException("Llegada a una reunión ya finalizada");
 
         for(int i=0; i<listaInvitacion.size(); i++) {
             if(listaInvitacion.get(i).getEmpleado() == asistente) {
                 listaInvitacion.remove(i);
+                if(horaInicio == null)
+                    listaAsistencia.add(new Asistencia(asistente));
+                else
+                    listaAsistencia.add(new Retraso(asistente, Instant.now()));
             }
         }
-        if(horaInicio == null)
-            listaAsistencia.add(new Asistencia(asistente));
-        else
-            listaAsistencia.add(new Retraso(asistente, Instant.now()));
+        for(int i=0; i<listaAsistencia.size(); i++) {
+            if(listaAsistencia.get(i).getEmpleado() == asistente)
+                throw new AsistenteNoEnListaException("Asistente ya en la reunión");
+        }
+        throw new AsistenteNoEnListaException("Asistente no invitado");
     }
 }

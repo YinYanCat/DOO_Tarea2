@@ -38,7 +38,7 @@ public class Main {
             r1.llegada(e5);
             cnv.printRegistroReunion(r1);
             r1.finalizar();
-        }catch (asistenteNoInvitadoException e){
+        }catch (AsistenteNoEnListaException e){
             System.out.println(e.getMessage());
             System.out.println("Asistente no invitado");
         } catch (Exception e) {

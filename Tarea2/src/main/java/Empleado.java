@@ -14,7 +14,7 @@ public class Empleado implements Invitable {
         this.nombre = nombre;
         this.apellidos = ape;
     }
-    public void invitar(Reunion reunion) {
+    public void invitar(Reunion reunion) throws Exception {
         reunion.agregarInvitado(this);
     }
     public String getNombre() {

@@ -32,11 +32,15 @@ class ReunionVirtualTest {
         d2 = new Departamento("Tecnicos");
         reunionVirtual = new ReunionVirtual(new Date(), Instant.now(), Duration.ofHours(1), organizador, tipoReunion.TECNICA, "www.reunion.com");
 
-        reunionVirtual.agregarInvitado(e1);
-        reunionVirtual.agregarInvitado(e2);
-        reunionVirtual.agregarInvitado(e3);
-        reunionVirtual.agregarInvitado(e4);
-        reunionVirtual.agregarInvitado(organizador);
+        try {
+            reunionVirtual.agregarInvitado(e1);
+            reunionVirtual.agregarInvitado(e2);
+            reunionVirtual.agregarInvitado(e3);
+            reunionVirtual.agregarInvitado(e4);
+            reunionVirtual.agregarInvitado(organizador);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @AfterEach
@@ -45,7 +49,7 @@ class ReunionVirtualTest {
     }
     @Test
     @DisplayName("Test asistencias")
-    void obtenerAsistencias() {
+    void obtenerAsistencias() throws Exception {
         ArrayList<Asistencia> asistencias = reunionVirtual.obtenerAsistencias();
         reunionVirtual.llegada(e1);
         assertNotNull(asistencias);
@@ -54,7 +58,7 @@ class ReunionVirtualTest {
 
     @Test
     @DisplayName("Test ausencias")
-    void obtenerAusencias() {
+    void obtenerAusencias() throws Exception {
         assertNotNull(reunionVirtual.obtenerAusencias());
         reunionVirtual.llegada(e1);
         reunionVirtual.llegada(e2);

@@ -11,7 +11,7 @@ public class Departamento implements Invitable {
     public void contratar(Empleado empleado) {
         listaEmpleados.add(empleado);
     }
-    public void invitar(Reunion reunion) {
+    public void invitar(Reunion reunion) throws Exception {
         for(int i=0; i<listaEmpleados.size(); i++) {
             reunion.agregarInvitado(listaEmpleados.get(i));
         }
