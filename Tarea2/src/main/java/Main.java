@@ -1,6 +1,6 @@
 import java.time.Duration;
 import java.time.Instant;
-import java.util.ArrayList;
+import java.time.temporal.ChronoUnit;
 import java.util.Date;
 
 public class Main {
@@ -37,7 +37,7 @@ public class Main {
             cnv.printRegistroReunion(r1);
             r1.llegada(e3);
             cnv.printRegistroReunion(r1);
-            r1.finalizar();
+            r1.finalizar(Instant.now().plus(1, ChronoUnit.HOURS));
             cnv.crearInformeReunion(r1, "ejemplo");
         } catch (Exception e) {
             System.out.println(e.getMessage());

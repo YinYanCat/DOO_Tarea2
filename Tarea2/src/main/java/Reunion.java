@@ -56,7 +56,7 @@ public abstract class Reunion {
         if(horaFin==null){
             tiempoReal = horaInicio.compareTo(Instant.now());
         }else{
-            tiempoReal = horaInicio.compareTo(horaFin);
+            tiempoReal = horaFin.compareTo(horaInicio);
         }
         return tiempoReal;
     }
@@ -65,10 +65,10 @@ public abstract class Reunion {
             throw new HoraYaEstablecidaException("Reunión ya iniciada");
         horaInicio = Instant.now();
     }
-    public void finalizar() throws Exception {
+    public void finalizar(Instant hora) throws Exception {
         if(horaFin != null)
             throw new HoraYaEstablecidaException("Reunión ya finalizada");
-        horaFin = Instant.now();
+        horaFin = hora;
     }
     public void agregarInvitado(Empleado empleado) throws Exception {
         for(int i=0; i<listaInvitacion.size(); i++) {

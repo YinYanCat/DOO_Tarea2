@@ -1,0 +1,18 @@
+Fecha: Sun May 12 23:11:01 CLT 2024
+Hora Prevista: 2024-05-13T03:11:01.827083200Z
+Duración Prevista: PT1H
+
+Hora Inicio: 2024-05-13T03:11:01.837866200Z
+Hora Fin: 2024-05-13T04:11:01.838801Z
+Duración total: 1.0
+Tipo de Reunión: TECNICA
+Organizador: Juan
+Enlace: www.reunion.com
+
+Asistencias: Roberto, Selena, Maria
+Retrasos: Selena, Maria
+Ausencias: Juan
+
+Notas de la Reunión:
+Roberto va a iniciar la reunión.
+Juan se cayó, no va a llegar.
