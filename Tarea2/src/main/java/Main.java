@@ -11,6 +11,7 @@ public class Main {
         Empleado e2 = new Empleado("Roberto", "Gomez", "2", "rgomez@correo.com");
         Empleado e3 = new Empleado("Maria", "Toncillo", "3", "mtoncillo@correo.com");
         Empleado e4 = new Empleado("Selena", "Rolecci", "4", "srolecci@correo.com");
+        Empleado e5 = new Empleado("Carlos","Saavedra","5","csaveedra@correo.com");
 
         Departamento d1 = new Departamento("Menta");
         Departamento d2 = new Departamento("Flipy");
@@ -21,18 +22,27 @@ public class Main {
         d2.contratar(e4);
 
         Reunion r1 = new ReunionPresencial(new Date(), Instant.now(), Duration.ofHours(1), e1, tipoReunion.TECNICA, "www.reunion.com");
-        e2.invitar(r1);
-        d2.invitar(r1);
-        cnv.printRegistroReunion(r1);
-        r1.llegada(e2);
-        cnv.printRegistroReunion(r1);
 
-        cnv.printRegistroReunion(r1);
-        r1.iniciar();
-        cnv.printRegistroReunion(r1);
-        r1.llegada(e4);
-        r1.llegada(e3);
-        cnv.printRegistroReunion(r1);
-        r1.finalizar();
+        try {
+            d1.invitar(r1);
+            d2.invitar(r1);
+            cnv.printRegistroReunion(r1);
+            r1.llegada(e2);
+            cnv.printRegistroReunion(r1);
+
+            cnv.printRegistroReunion(r1);
+            r1.iniciar();
+            cnv.printRegistroReunion(r1);
+            r1.llegada(e4);
+            r1.llegada(e3);
+            r1.llegada(e5);
+            cnv.printRegistroReunion(r1);
+            r1.finalizar();
+        }catch (asistenteNoInvitadoException e){
+            System.out.println(e.getMessage());
+            System.out.println("Asistente no invitado");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 }

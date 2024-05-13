@@ -68,10 +68,19 @@ public abstract class Reunion {
         Invitacion invitado = new Invitacion(empleado, Instant.now());
         listaInvitacion.add(invitado);
     }
-    public void llegada(Empleado asistente) {
+    public void llegada(Empleado asistente) throws Exception{
 
         //to-do:
         // Bloquear a asistentes no invitados
+
+        for(int i=0; i<listaAsistencia.size(); i++){
+            if(listaAsistencia.get(i).getEmpleado() == asistente){
+                break;
+            }
+            if(i==listaAsistencia.size()-1){
+                throw new asistenteNoInvitadoException("Asistente no Invitado");
+            }
+        }
 
         for(int i=0; i<listaInvitacion.size(); i++) {
             if(listaInvitacion.get(i).getEmpleado() == asistente) {
