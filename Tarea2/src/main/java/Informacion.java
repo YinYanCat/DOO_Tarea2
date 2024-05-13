@@ -83,7 +83,7 @@ public class Informacion {
             myWriter.write("Retrasos:"+listaAsistenciaNombres(reunion.obtenerRetrasos())+"\n");
             //Ausentes
             myWriter.write("Ausencias:"+listaInvitadosNombres(reunion.obtenerAusencias())+"\n\n");
-            myWriter.write(reunion.getNota().getContenido());
+            myWriter.write("Notas de la Reunión:"+reunion.getNota().getContenido());
             myWriter.close();
             System.out.println("Informe de reunión creado en: "+nombre+".txt");
         } catch (IOException e) {

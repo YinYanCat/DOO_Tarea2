@@ -21,8 +21,9 @@ public abstract class Reunion {
         this.fecha = fecha;
         horaPrevista = hora;
         duracionPrevista = duracion;
-        horaFin=null;
         horaInicio=null;
+        horaFin=null;
+        notaReunion = new Nota();
         listaInvitacion = new ArrayList<>();
         listaAsistencia = new ArrayList<>();
         organizador = org;
@@ -96,6 +97,9 @@ public abstract class Reunion {
                 throw new AsistenteNoEnListaException("Asistente ya en la reunión");
         }
         throw new AsistenteNoEnListaException("Asistente no invitado");
+    }
+    public void agregarNora(String nota) {
+        notaReunion.addContenido(nota);
     }
     public String getTiemposPrevistos() {
         return "Fecha: "+fecha+"\n"+"Hora Prevista: "+horaPrevista+"\n"+"Duración Prevista: "+duracionPrevista;
