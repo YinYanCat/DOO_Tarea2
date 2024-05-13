@@ -4,11 +4,11 @@ import java.util.ArrayList;
 
 public class Retraso extends Asistencia {
     private Instant horaLlegada;
-    public Retraso(Empleado invitado, Instant hora) {
+    public Retraso(Invitacion invitado, Instant hora) {
         super(invitado);
         horaLlegada = hora;
     }
-    public Instant getHoraLlegada() {
+    public Instant getHora() {
         return horaLlegada;
     }
 }

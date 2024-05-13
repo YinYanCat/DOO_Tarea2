@@ -21,7 +21,8 @@ public class Main {
         d2.contratar(e3);
         d2.contratar(e4);
 
-        Reunion r1 = new ReunionVirtual(new Date(), Instant.now(), Duration.ofHours(1), e1, tipoReunion.TECNICA, "www.reunion.com");
+        Instant horaPrevista = Instant.now();
+        Reunion r1 = new ReunionVirtual(new Date(), horaPrevista, Duration.ofHours(1), e1, tipoReunion.TECNICA, "www.reunion.com");
 
         try {
             d1.invitar(r1);

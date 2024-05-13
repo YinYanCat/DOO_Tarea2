@@ -1,5 +1,6 @@
 import java.time.Duration;
 import java.time.Instant;
+import java.time.ZoneOffset;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -83,12 +84,13 @@ public abstract class Reunion {
             throw new AsistenciaDespuesDeFinalizarException("Llegada a una reunión ya finalizada");
 
         for(int i=0; i<listaInvitacion.size(); i++) {
-            if(listaInvitacion.get(i).getEmpleado() == asistente) {
-                listaInvitacion.remove(i);
+            Invitacion invitado = listaInvitacion.get(i);
+            if(invitado.getEmpleado() == asistente) {
                 if(horaInicio == null)
-                    listaAsistencia.add(new Asistencia(asistente));
+                    listaAsistencia.add(new Asistencia(invitado));
                 else
-                    listaAsistencia.add(new Retraso(asistente, Instant.now()));
+                    listaAsistencia.add(new Retraso(invitado, Instant.now()));
+                listaInvitacion.remove(i);
                 return;
             }
         }
@@ -102,13 +104,17 @@ public abstract class Reunion {
         notaReunion.addContenido(nota);
     }
     public String getTiemposPrevistos() {
-        return "Fecha: "+fecha.toString()+"\n"+"Hora Prevista: "+horaPrevista+"\n"+"Duración Prevista: "+duracionPrevista.getSeconds()/60+" minutos" ;
+        String hPrev = horaInicio.atZone(ZoneOffset.UTC).toLocalTime().toString();
+        long dPrev = duracionPrevista.getSeconds()/60;
+        return "Fecha: "+fecha.toString()+"\n"+"Hora Prevista: "+hPrev+" (UTC)\n"+"Duración Prevista: "+dPrev+" minutos";
     }
     public String getTiemposReunion() {
-        return "Hora Inicio: "+horaInicio+"\n"+"Hora Fin: "+horaFin;
+        String hInicio = horaInicio.atZone(ZoneOffset.UTC).toLocalTime().toString();
+        String hFinal = horaFin.atZone(ZoneOffset.UTC).toLocalTime().toString();
+        return "Hora Inicio: "+hInicio+" (UTC)\n"+"Hora Fin: "+hFinal+" (UTC)";
     }
     public String getInfoReunion() {
-        return "Tipo de Reunión: "+tipo+"\n"+"Organizador: "+organizador.getNombre();
+        return "Tipo de Reunión: "+tipo+"\n"+"Organizador: "+organizador.getNombreComp();
     }
     public Nota getNota() {
         return notaReunion;

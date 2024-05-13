@@ -20,4 +20,10 @@ public class Empleado implements Invitable {
     public String getNombre() {
         return nombre;
     }
+    public String getNombreComp() {
+        return nombre+" "+apellidos;
+    }
+    public String getInfo() {
+        return id+", "+correo;
+    }
 }
