@@ -29,11 +29,11 @@ public class Main {
             cnv.printRegistroReunion(r1);
             r1.llegada(e2);
             cnv.printRegistroReunion(r1);
-            r1.agregarNora("Roberto va a iniciar la reunión.");
+            r1.agregarNota("Roberto va a iniciar la reunión.");
             r1.iniciar();
             cnv.printRegistroReunion(r1);
             r1.llegada(e4);
-            r1.agregarNora("Juan se cayó, no va a llegar.");
+            r1.agregarNota("Juan se cayó, no va a llegar.");
             cnv.printRegistroReunion(r1);
             r1.llegada(e3);
             cnv.printRegistroReunion(r1);

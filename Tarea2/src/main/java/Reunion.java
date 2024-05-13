@@ -98,7 +98,7 @@ public abstract class Reunion {
         }
         throw new AsistenteNoEnListaException("Asistente no invitado");
     }
-    public void agregarNora(String nota) {
+    public void agregarNota(String nota) {
         notaReunion.addContenido(nota);
     }
     public String getTiemposPrevistos() {

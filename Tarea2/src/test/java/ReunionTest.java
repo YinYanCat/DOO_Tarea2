@@ -6,12 +6,13 @@ import org.junit.jupiter.api.Test;
 
 import java.time.Duration;
 import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ReunionVirtualTest {
+public class ReunionTest {
     private ReunionVirtual reunionVirtual;
     private Empleado organizador;
     private Empleado e1;
@@ -36,7 +37,6 @@ class ReunionVirtualTest {
             reunionVirtual.agregarInvitado(e1);
             reunionVirtual.agregarInvitado(e2);
             reunionVirtual.agregarInvitado(e3);
-            reunionVirtual.agregarInvitado(e4);
             reunionVirtual.agregarInvitado(organizador);
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -63,20 +63,54 @@ class ReunionVirtualTest {
         reunionVirtual.llegada(e1);
         reunionVirtual.llegada(e2);
         reunionVirtual.llegada(e3);
-        reunionVirtual.llegada(e4);
         reunionVirtual.llegada(organizador);
         assertEquals(0,reunionVirtual.obtenerAusencias().size());
     }
 
     @Test
-    void obtenerRetrasos() {
+    @DisplayName("Test retrasos")
+    void obtenerRetrasos() throws Exception {
+        assertEquals(0,reunionVirtual.obtenerRetrasos().size());
+        reunionVirtual.llegada(e1);
+        reunionVirtual.iniciar();
+        reunionVirtual.llegada(e2);
+        reunionVirtual.llegada(e3);
+        reunionVirtual.llegada(organizador);
+        assertEquals(4,reunionVirtual.obtenerRetrasos().size());
     }
 
     @Test
-    void agregarInvitado() {
+    @DisplayName("Test llegada no invitado")
+    void llegada(){
+        try {
+            reunionVirtual.llegada(e4);
+        }catch (Exception e) {
+
+            String expectedMessage = "Asistente no invitado";
+            String actualMessage = e.getMessage();
+
+            assertTrue(actualMessage.contains(expectedMessage));
+        }
+
+        try{
+            reunionVirtual.llegada(e2);
+            reunionVirtual.llegada(e2);
+        }catch(Exception e){
+            String expectedMessage = "Asistente ya en la reunión";
+            String actualMessage = e.getMessage();
+            assertTrue(actualMessage.contains(expectedMessage));
+        }
+
+        try{
+            reunionVirtual.finalizar(Instant.now().plus(1, ChronoUnit.HOURS));
+            reunionVirtual.llegada(e2);
+            
+        }catch(Exception e){
+            String expectedMessage = "Llegada a una reunión ya finalizada";
+            String actualMessage = e.getMessage();
+            assertTrue(actualMessage.contains(expectedMessage));
+        }
+
     }
 
-    @Test
-    void llegada() {
-    }
 }
