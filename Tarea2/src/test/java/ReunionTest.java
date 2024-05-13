@@ -24,13 +24,14 @@ public class ReunionTest {
 
     @BeforeEach
     void setUp() {
-        organizador = new Empleado("Juan","Valenzuela","1","jvalenzuela@correo.com");
-        e1 = new Empleado("Juan", "Perez", "2", "jperez@correo.com");
-        e2 = new Empleado("Roberto", "Gomez", "3", "rgomez@correo.com");
-        e3 = new Empleado("Maria", "Toncillo", "4", "mtoncillo@correo.com");
-        e4 = new Empleado("Selena", "Rolecci", "5", "srolecci@correo.com");
         d1 = new Departamento("Analistas");
         d2 = new Departamento("Tecnicos");
+        organizador = new Empleado("Juan","Valenzuela","1","jvalenzuela@correo.com", d1);
+        e1 = new Empleado("Juan", "Perez", "2", "jperez@correo.com", d1);
+        e2 = new Empleado("Roberto", "Gomez", "3", "rgomez@correo.com", d2);
+        e3 = new Empleado("Maria", "Toncillo", "4", "mtoncillo@correo.com", d2);
+        e4 = new Empleado("Selena", "Rolecci", "5", "srolecci@correo.com", d2);
+
         reunionVirtual = new ReunionVirtual(new Date(), Instant.now(), Duration.ofHours(1), organizador, tipoReunion.TECNICA, "www.reunion.com");
 
         try {

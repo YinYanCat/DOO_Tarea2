@@ -8,11 +8,12 @@ public class Empleado implements Invitable {
     private String nombre;
     private String correo;
 
-    public Empleado(String nombre, String ape, String id, String correo) {
+    public Empleado(String nombre, String ape, String id, String correo, Departamento depto) {
         this.id = id;
         this.correo = correo;
         this.nombre = nombre;
         this.apellidos = ape;
+        depto.contratar(this);
     }
     public void invitar(Reunion reunion) throws Exception {
         reunion.agregarInvitado(this);
