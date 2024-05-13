@@ -1,9 +1,9 @@
-Fecha: Sun May 12 23:11:01 CLT 2024
-Hora Prevista: 2024-05-13T03:11:01.827083200Z
-Duración Prevista: PT1H
+Fecha: Sun May 12 23:17:18 CLT 2024
+Hora Prevista: 2024-05-13T03:17:18.768195500Z
+Duración Prevista: 60 minutos
 
-Hora Inicio: 2024-05-13T03:11:01.837866200Z
-Hora Fin: 2024-05-13T04:11:01.838801Z
+Hora Inicio: 2024-05-13T03:17:18.780725900Z
+Hora Fin: 2024-05-13T04:17:18.781728100Z
 Duración total: 1.0
 Tipo de Reunión: TECNICA
 Organizador: Juan
