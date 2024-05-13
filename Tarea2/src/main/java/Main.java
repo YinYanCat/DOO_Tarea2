@@ -21,7 +21,7 @@ public class Main {
         d2.contratar(e3);
         d2.contratar(e4);
 
-        Reunion r1 = new ReunionPresencial(new Date(), Instant.now(), Duration.ofHours(1), e1, tipoReunion.TECNICA, "www.reunion.com");
+        Reunion r1 = new ReunionVirtual(new Date(), Instant.now(), Duration.ofHours(1), e1, tipoReunion.TECNICA, "www.reunion.com");
 
         try {
             d1.invitar(r1);
@@ -29,20 +29,17 @@ public class Main {
             cnv.printRegistroReunion(r1);
             r1.llegada(e2);
             cnv.printRegistroReunion(r1);
-
-            cnv.printRegistroReunion(r1);
             r1.iniciar();
             cnv.printRegistroReunion(r1);
             r1.llegada(e4);
-            r1.llegada(e3);
-            r1.llegada(e5);
             cnv.printRegistroReunion(r1);
+            r1.llegada(e3);
+            cnv.printRegistroReunion(r1);
+
             r1.finalizar();
-        }catch (AsistenteNoEnListaException e){
-            System.out.println(e.getMessage());
-            System.out.println("Asistente no invitado");
+            cnv.crearInformeReunion(r1, "ejemplo");
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            System.out.println(e.getMessage());
         }
     }
 }

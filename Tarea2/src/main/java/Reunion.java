@@ -25,6 +25,7 @@ public abstract class Reunion {
         horaInicio=null;
         listaInvitacion = new ArrayList<>();
         listaAsistencia = new ArrayList<>();
+        organizador = org;
     }
     public ArrayList<Asistencia> obtenerAsistencias() {
         return listaAsistencia;
@@ -64,7 +65,7 @@ public abstract class Reunion {
         horaInicio = Instant.now();
     }
     public void finalizar() throws Exception {
-        if(horaInicio != null)
+        if(horaFin != null)
             throw new HoraYaEstablecidaException("Reunión ya finalizada");
         horaFin = Instant.now();
     }
@@ -87,6 +88,7 @@ public abstract class Reunion {
                     listaAsistencia.add(new Asistencia(asistente));
                 else
                     listaAsistencia.add(new Retraso(asistente, Instant.now()));
+                return;
             }
         }
         for(int i=0; i<listaAsistencia.size(); i++) {
@@ -95,4 +97,17 @@ public abstract class Reunion {
         }
         throw new AsistenteNoEnListaException("Asistente no invitado");
     }
+    public String getTiemposPrevistos() {
+        return "Fecha: "+fecha+"\n"+"Hora Prevista: "+horaPrevista+"\n"+"Duración Prevista: "+duracionPrevista;
+    }
+    public String getTiemposReunion() {
+        return "Hora Inicio: "+horaInicio+"\n"+"Hora Fin: "+horaFin;
+    }
+    public String getInfoReunion() {
+        return "Tipo de Reunión: "+tipo+"\n"+"Organizador: "+organizador.getNombre();
+    }
+    public Nota getNota() {
+        return notaReunion;
+    }
+    public abstract String getLugar();
 }
