@@ -102,7 +102,7 @@ public abstract class Reunion {
         notaReunion.addContenido(nota);
     }
     public String getTiemposPrevistos() {
-        return "Fecha: "+fecha.toString()+"\n"+"Hora Prevista: "+horaPrevista.+"\n"+"Duración Prevista: "+duracionPrevista.getSeconds()/60+" minutos" ;
+        return "Fecha: "+fecha.toString()+"\n"+"Hora Prevista: "+horaPrevista+"\n"+"Duración Prevista: "+duracionPrevista.getSeconds()/60+" minutos" ;
     }
     public String getTiemposReunion() {
         return "Hora Inicio: "+horaInicio+"\n"+"Hora Fin: "+horaFin;
