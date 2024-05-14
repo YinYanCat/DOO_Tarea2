@@ -67,6 +67,8 @@ public class Informe {
             myWriter.write(sHoraIni+"\n"+sHoraFin+"\n"+sDura+"\n");
             myWriter.write("Tipo de Reunión: " + reunion.getTipo()+"\n"+sOrg+"\n"+reunion.getLugar()+"\n\n");
             myWriter.write(sAsis+"\n\n"+sRet+"\n\n"+sAus+"\n\n");
+            myWriter.write("Asistencia Total: "+reunion.obtenerTotalAsistencia()+"/"+reunion.obtenerTotalInvitacion());
+            myWriter.write(" // "+reunion.obtenerPorcentajeAsistencia()+"%\n\n");
             myWriter.write("Notas de la Reunión:"+reunion.getNota().getContenido());
             myWriter.close();
             System.out.println("Informe de la reunión creado en: "+nombre+".txt");

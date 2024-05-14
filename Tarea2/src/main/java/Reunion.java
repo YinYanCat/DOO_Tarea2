@@ -46,6 +46,9 @@ public abstract class Reunion {
     public int obtenerTotalAsistencia() {
         return listaAsistencia.size();
     }
+    public int obtenerTotalInvitacion() {
+        return listaInvitacion.size()+listaAsistencia.size();
+    }
     public float obtenerPorcentajeAsistencia() {
         float cantAsistencia = (float)listaAsistencia.size();
         float cantInvitacion = (float)listaInvitacion.size()+cantAsistencia;
