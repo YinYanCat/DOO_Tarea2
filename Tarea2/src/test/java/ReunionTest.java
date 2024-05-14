@@ -52,7 +52,7 @@ public class ReunionTest {
     @DisplayName("Test asistencias")
     void obtenerAsistencias() throws Exception {
         ArrayList<Asistencia> asistencias = reunionVirtual.obtenerAsistencias();
-        reunionVirtual.llegada(e1);
+        reunionVirtual.llegadaEmpleado(e1);
         assertNotNull(asistencias);
 
     }
@@ -61,10 +61,10 @@ public class ReunionTest {
     @DisplayName("Test ausencias")
     void obtenerAusencias() throws Exception {
         assertNotNull(reunionVirtual.obtenerAusencias());
-        reunionVirtual.llegada(e1);
-        reunionVirtual.llegada(e2);
-        reunionVirtual.llegada(e3);
-        reunionVirtual.llegada(organizador);
+        reunionVirtual.llegadaEmpleado(e1);
+        reunionVirtual.llegadaEmpleado(e2);
+        reunionVirtual.llegadaEmpleado(e3);
+        reunionVirtual.llegadaEmpleado(organizador);
         assertEquals(0,reunionVirtual.obtenerAusencias().size());
     }
 
@@ -72,11 +72,11 @@ public class ReunionTest {
     @DisplayName("Test retrasos")
     void obtenerRetrasos() throws Exception {
         assertEquals(0,reunionVirtual.obtenerRetrasos().size());
-        reunionVirtual.llegada(e1);
+        reunionVirtual.llegadaEmpleado(e1);
         reunionVirtual.iniciar();
-        reunionVirtual.llegada(e2);
-        reunionVirtual.llegada(e3);
-        reunionVirtual.llegada(organizador);
+        reunionVirtual.llegadaEmpleado(e2);
+        reunionVirtual.llegadaEmpleado(e3);
+        reunionVirtual.llegadaEmpleado(organizador);
         assertEquals(4,reunionVirtual.obtenerRetrasos().size());
     }
 
@@ -84,7 +84,7 @@ public class ReunionTest {
     @DisplayName("Test llegada no invitado")
     void llegada(){
         try {
-            reunionVirtual.llegada(e4);
+            reunionVirtual.llegadaEmpleado(e4);
         }catch (Exception e) {
 
             String expectedMessage = "Asistente no invitado";
@@ -94,8 +94,8 @@ public class ReunionTest {
         }
 
         try{
-            reunionVirtual.llegada(e2);
-            reunionVirtual.llegada(e2);
+            reunionVirtual.llegadaEmpleado(e2);
+            reunionVirtual.llegadaEmpleado(e2);
         }catch(Exception e){
             String expectedMessage = "Asistente ya en la reunión";
             String actualMessage = e.getMessage();
@@ -104,7 +104,7 @@ public class ReunionTest {
 
         try{
             reunionVirtual.finalizar(Instant.now().plus(1, ChronoUnit.HOURS));
-            reunionVirtual.llegada(e2);
+            reunionVirtual.llegadaEmpleado(e2);
             
         }catch(Exception e){
             String expectedMessage = "Llegada a una reunión ya finalizada";

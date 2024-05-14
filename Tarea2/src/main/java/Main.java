@@ -5,7 +5,7 @@ import java.util.Date;
 
 public class Main {
     public static void main(String[] args) {
-        Informacion cnv = new Informacion();
+        Informe inf = new Informe();
 
         Departamento d1 = new Departamento("Menta");
         Departamento d2 = new Departamento("Flipy");
@@ -22,19 +22,14 @@ public class Main {
         try {
             d1.invitar(r1);
             d2.invitar(r1);
-            cnv.printRegistroReunion(r1);
-            r1.llegada(e2);
-            cnv.printRegistroReunion(r1);
+            r1.llegadaEmpleado(e2);
             r1.agregarNota("Roberto va a iniciar la reunión.");
             r1.iniciar();
-            cnv.printRegistroReunion(r1);
-            r1.llegada(e4);
+            r1.llegadaEmpleado(e4);
             r1.agregarNota("Juan se cayó, no va a llegar.");
-            cnv.printRegistroReunion(r1);
-            r1.llegada(e3);
-            cnv.printRegistroReunion(r1);
+            r1.llegadaEmpleado(e3);
             r1.finalizar(Instant.now().plus(1, ChronoUnit.HOURS));
-            cnv.crearInformeReunion(r1, "ejemplo");
+            inf.crearInformeReunion(r1, "ejemplo");
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

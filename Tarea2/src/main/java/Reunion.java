@@ -1,6 +1,5 @@
 import java.time.Duration;
 import java.time.Instant;
-import java.time.ZoneOffset;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -79,7 +78,7 @@ public abstract class Reunion {
         Invitacion invitado = new Invitacion(empleado, Instant.now());
         listaInvitacion.add(invitado);
     }
-    public void llegada(Empleado asistente) throws Exception {
+    public void llegadaEmpleado(Empleado asistente) throws Exception {
         if(horaFin != null)
             throw new AsistenciaDespuesDeFinalizarException("Llegada a una reunión ya finalizada");
 
@@ -103,21 +102,38 @@ public abstract class Reunion {
     public void agregarNota(String nota) {
         notaReunion.addContenido(nota);
     }
-    public String getTiemposPrevistos() {
-        String hPrev = horaInicio.atZone(ZoneOffset.UTC).toLocalTime().toString();
-        long dPrev = duracionPrevista.getSeconds()/60;
-        return "Fecha: "+fecha.toString()+"\n"+"Hora Prevista: "+hPrev+" (UTC)\n"+"Duración Prevista: "+dPrev+" minutos";
+
+    public Date getFecha() {
+        return fecha;
     }
-    public String getTiemposReunion() {
-        String hInicio = horaInicio.atZone(ZoneOffset.UTC).toLocalTime().toString();
-        String hFinal = horaFin.atZone(ZoneOffset.UTC).toLocalTime().toString();
-        return "Hora Inicio: "+hInicio+" (UTC)\n"+"Hora Fin: "+hFinal+" (UTC)";
+
+    public Instant getHoraPrevista() {
+        return horaPrevista;
     }
-    public String getInfoReunion() {
-        return "Tipo de Reunión: "+tipo+"\n"+"Organizador: "+organizador.getNombreComp();
+
+    public Duration getDuracionPrevista() {
+        return duracionPrevista;
     }
+
+    public Instant getHoraInicio() {
+        return horaInicio;
+    }
+
+    public Instant getHoraFin() {
+        return horaFin;
+    }
+
     public Nota getNota() {
         return notaReunion;
     }
+
+    public tipoReunion getTipo() {
+        return tipo;
+    }
+
+    public Empleado getOrganizador() {
+        return organizador;
+    }
+
     public abstract String getLugar();
 }
