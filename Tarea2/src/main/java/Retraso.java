@@ -17,7 +17,7 @@ public class Retraso extends Asistencia {
         horaLlegada = hora;
     }
 
-    /** Método para devolver la hora en la cúal el asistente llega a la reunión
+    /** Método para obtener la hora en la cúal el asistente llega a la reunión
      * @return La hora en la que el asistente llega a la reunión de forma tardía */
     public Instant getHora() {
         return horaLlegada;

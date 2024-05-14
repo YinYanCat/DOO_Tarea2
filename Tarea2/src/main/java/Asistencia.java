@@ -19,13 +19,13 @@ public class Asistencia {
         horaInvitacion = invitado.getHora();
     }
 
-    /** Método para devolver el empleado, y su información personal, que asiste a la reunión
+    /** Método para obtener el empleado, y su información personal, que asiste a la reunión
      * @return El empleado guardado que asiste a la reunión */
     public Empleado getEmpleado() {
         return asistente;
     }
 
-    /** Método para devolver la hora en la cúal se envió la invitación al asistente
+    /** Método para obtener la hora en la cúal se envió la invitación al asistente
      * @return La hora del envio de la invitación; al ser un instante de tiempo, tambien contiene la fecha */
     public Instant getHora() {
         return horaInvitacion;

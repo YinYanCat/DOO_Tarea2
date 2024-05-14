@@ -20,13 +20,13 @@ public class Invitacion {
         horaInvitacion = hora;
     }
 
-    /** Método para devolver el empleado, y su información personal, invitado a la reunión
+    /** Método para obtener el empleado, y su información personal, invitado a la reunión
      * @return El empleado guardado que es invitado a la reunión */
     public Empleado getEmpleado() {
         return invitado;
     }
 
-    /** Método para devolver la hora en la cúal se envió la invitación al empleado
+    /** Método para obtener la hora en la cúal se envió la invitación al empleado
      * @return La hora del envio de la invitación; al ser un instante de tiempo, tambien contiene la fecha */
     public Instant getHora() {
         return horaInvitacion;
