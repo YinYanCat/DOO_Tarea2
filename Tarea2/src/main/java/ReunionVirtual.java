@@ -23,9 +23,15 @@ public class ReunionVirtual extends Reunion {
         this.enlace = enlace;
     }
 
-    /** Método abstracto para obtener el enlace de la reunión
-     * @return El enlace de la reunión, junto con un texto diciendo "Enlace: "*/
+    /** Método para obtener el enlace de la reunión virtual
+     * @return El enlace de la reunión virtual" */
     public String getLugar() {
-        return "Enlace: "+enlace;
+        return enlace;
+    }
+
+    /** Método para obtener el tipo de lugar donde se realizará la reunión
+     * @return El texto "Enlace" "*/
+    public String getTipoLugar() {
+        return "Enlace";
     }
 }

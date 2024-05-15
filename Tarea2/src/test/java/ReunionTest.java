@@ -11,7 +11,7 @@ import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-/** Tests unitarios para las clases reunion, usa en este caso ReunionVirtual para los test
+/** Tests unitarios para una reunión, en este caso se crea una reunión virtual para los tests
  * @author Chloe Yañez Lavin
  * @author Emily Osvaldo Gaete Bobadilla */
 
@@ -23,8 +23,8 @@ public class ReunionTest {
     private Empleado e3;
     private Empleado e4;
 
-    /** SetUp para cada test de Reunion
-     * Crea una reunion virtual y asigna los invitdos, deja a un empledo sin invitar */
+    /** SetUp para cada test de la reunión
+     * Crea una reunión virtual y asigna los invitados a la misma, dejando a un empleado sin invitar */
     @BeforeEach
     void setUp() {
         Departamento d1 = new Departamento("Analistas");
@@ -52,7 +52,7 @@ public class ReunionTest {
 
     }
 
-    /** test de asistencia de 4 empleados
+    /** Test de asistencia de cuatro empleados
      * Prueba que la lista de asistencia sea no nula y que tenga un tamaño de 4 */
     @Test
     @DisplayName("Test asistencias")
@@ -67,7 +67,7 @@ public class ReunionTest {
 
     }
 
-    /** test de ausencia de 1 empleado
+    /** Test de ausencia de un empleado
      * Prueba que la lista de ausencia sea no nula y que tenga un tamaño de 1 */
     @Test
     @DisplayName("Test ausencias")
@@ -79,9 +79,9 @@ public class ReunionTest {
         assertEquals(1,reunionVirtual.obtenerAusencias().size());
     }
 
-    /** test de retraso de 3 empleados
-     * Prueba que la lista de retraso este vacia antes de empezar la reunión
-     * Luego de iniciar se pueba que la lista de retraso sea de tamaño 3*/
+    /** Test de retraso de tres empleados
+     * Prueba que la lista de retraso este vacía antes de empezar la reunión
+     * Luego de iniciar se pueba que la lista de retraso sea de tamaño 3 */
     @Test
     @DisplayName("Test retrasos")
     void obtenerRetrasos() throws Exception {
@@ -94,9 +94,9 @@ public class ReunionTest {
         assertEquals(3,reunionVirtual.obtenerRetrasos().size());
     }
 
-    /** test de llegada de empleados
-     * Prueba las excepciones que se pueden obtener
-     * Se prueba que se obtengan las excepciones para empleados no invitados, invitado ya en la reunión y la llegada de un invitado después de finalizar la reunion*/
+    /** Test de llegada de empleados
+     * Prueba las excepciones que se pueden obtener en la reunión
+     * Se prueba que se obtengan las excepciones para empleados no invitados, invitado ya en la reunión y la llegada de un invitado después de finalizar la reunión */
     @Test
     @DisplayName("Test Exceptions llegada")
     void llegada(){

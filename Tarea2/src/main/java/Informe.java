@@ -20,7 +20,20 @@ public class Informe {
         String listaEmpleados = "";
         for (int i = 0; i < listaAsistencia.size(); i++) {
             Asistencia asistente = listaAsistencia.get(i);
-            String hora = toStringHoraCLT(asistente.getHora());
+            String hora = toStringHoraCLT(asistente.getHoraInvitacion());
+            listaEmpleados = listaEmpleados+"\n- "+(asistente.getEmpleado().getNombreCompleto()+" ["+hora+"]");
+        }
+        return listaEmpleados;
+    }
+
+    /** Método para convertir una lista de retrasos en un String de nombres de los empleados y horas
+     * @param listaAsistencia La lista de retrasos que contienen empleados
+     * @return El String de los nombres y las horas de llegada a la reunión, separadas por líneas  */
+    public String listaRetrasosNombres(ArrayList<Retraso> listaAsistencia) {
+        String listaEmpleados = "";
+        for (int i = 0; i < listaAsistencia.size(); i++) {
+            Retraso asistente = listaAsistencia.get(i);
+            String hora = toStringHoraCLT(asistente.getHoraRetraso());
             listaEmpleados = listaEmpleados+"\n- "+(asistente.getEmpleado().getNombreCompleto()+" ["+hora+"]");
         }
         return listaEmpleados;
@@ -76,13 +89,13 @@ public class Informe {
             String sDura = "Duración: " + reunion.calcularTiempoReal() * 60 + " minutos";
             String sOrg = "Organizador: " + reunion.getOrganizador().getNombreCompleto();
             String sAsis = "Asistencias [Hora envio invitación]:" + listaAsistenciaNombres(reunion.obtenerAsistencias());
-            String sRet = "Retrasos [Hora de llegada]:" + listaAsistenciaNombres(reunion.obtenerRetrasos());
+            String sRet = "Retrasos [Hora de llegada]:" + listaRetrasosNombres(reunion.obtenerRetrasos());
             String sAus = "Ausencias [Hora envio invitación]:" + listaInvitadosNombres(reunion.obtenerAusencias());
 
             FileWriter myWriter = new FileWriter(nombre+".txt");
             myWriter.write(sFecha+"\n"+sHoraPrev+"\n"+sDuraPrev+"\n\n");
             myWriter.write(sHoraIni+"\n"+sHoraFin+"\n"+sDura+"\n");
-            myWriter.write("Tipo de Reunión: " + reunion.getTipo()+"\n"+sOrg+"\n"+reunion.getLugar()+"\n\n");
+            myWriter.write("Tipo de Reunión: " + reunion.getTipo()+"\n"+sOrg+"\n"+reunion.getTipoLugar()+": "+reunion.getLugar()+"\n\n");
             myWriter.write(sAsis+"\n\n"+sRet+"\n\n"+sAus+"\n\n");
             myWriter.write("Asistencia Total: "+reunion.obtenerTotalAsistencia()+"/"+reunion.obtenerTotalInvitacion());
             myWriter.write(" | "+reunion.obtenerPorcentajeAsistencia()+"%\n\n");

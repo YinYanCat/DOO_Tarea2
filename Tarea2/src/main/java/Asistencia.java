@@ -27,7 +27,7 @@ public class Asistencia {
 
     /** Método para obtener la hora en la cúal se envió la invitación al asistente
      * @return La hora del envio de la invitación; al ser un instante de tiempo, tambien contiene la fecha */
-    public Instant getHora() {
+    public Instant getHoraInvitacion() {
         return horaInvitacion;
     }
 }

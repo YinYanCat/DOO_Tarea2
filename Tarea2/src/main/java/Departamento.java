@@ -36,19 +36,19 @@ public class Departamento implements Invitable {
 
     /** Método para obtener el nombre del departamento
      * @return El nombre del departamento */
-    public String obtenerNombre(){
+    public String getNombre(){
         return nombre;
     }
 
     /** Método para obtener la lista de empleados pretenecientes al departamento
      * @return La lista de empleados que pertenecen al departamento */
-    public ArrayList<Empleado> obtenerEmpleados(){
+    public ArrayList<Empleado> getEmpleados(){
         return listaEmpleados;
     }
 
     /** Método para devolver la cantidad de empleados que trabajan en el departamento
      * @return La cantidad de empleados que trabajan en el departamento */
-    public int obtenerCantidadEmpleados(){
+    public int getCantidadEmpleados(){
         return listaEmpleados.size();
     }
 }

@@ -74,11 +74,11 @@ public abstract class Reunion {
 
     /** Método para obtener la lista de asistentes retrasados a la reunión
      * @return La lista de asistentes retrasados, las cuales contienen empleados y horas */
-    public ArrayList<Asistencia> obtenerRetrasos() {
-        ArrayList<Asistencia> listaRetraso= new ArrayList<>();
+    public ArrayList<Retraso> obtenerRetrasos() {
+        ArrayList<Retraso> listaRetraso= new ArrayList<>();
         for(int i=0; i<listaAsistencia.size(); i++) {
             if(listaAsistencia.get(i).getClass() == Retraso.class) {
-                listaRetraso.add(listaAsistencia.get(i));
+                listaRetraso.add((Retraso)listaAsistencia.get(i));
             }
         }
         return listaRetraso;
@@ -228,4 +228,8 @@ public abstract class Reunion {
     /** Método abstracto para obtener la sala o el enlace de la reunión
      * @return La sala o el enlace de la reunión, junto con un texto diciendo cuál de las dos es */
     public abstract String getLugar();
+
+    /** Método abstracto para obtener el tipo de lugar donde se realizará la reunión
+     * @return El texto donde especifica el tipo de lugar, sala o enlace "*/
+    public abstract String getTipoLugar();
 }

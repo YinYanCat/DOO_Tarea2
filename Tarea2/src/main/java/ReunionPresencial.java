@@ -22,10 +22,15 @@ public class ReunionPresencial extends Reunion {
         super(fecha, hora, duracion, org, miTipo);
         this.sala=sala;
     }
-
-    /** Método abstracto para obtener la sala de la reunión
-     * @return La sala de la reunión, junto con un texto diciendo "Sala: "*/
+    /** Método para obtener la sala de la reunión presencial
+     * @return El enlace de la reunión presencial" */
     public String getLugar() {
-        return "Sala: "+sala;
+        return sala;
+    }
+
+    /** Método para obtener el tipo de lugar donde se realizará la reunión
+     * @return El texto "Sala" "*/
+    public String getTipoLugar() {
+        return "Sala";
     }
 }
