@@ -21,7 +21,7 @@ public class Informe {
         for (int i = 0; i < listaAsistencia.size(); i++) {
             Asistencia asistente = listaAsistencia.get(i);
             String hora = toStringHoraCLT(asistente.getHoraInvitacion());
-            listaEmpleados = listaEmpleados+"\n- "+(asistente.getEmpleado().getNombreCompleto()+" ["+hora+"]");
+            listaEmpleados = listaEmpleados+"\n- "+(asistente.getEmpleado().toString()+" ["+hora+"]");
         }
         return listaEmpleados;
     }
@@ -34,7 +34,7 @@ public class Informe {
         for (int i = 0; i < listaAsistencia.size(); i++) {
             Retraso asistente = listaAsistencia.get(i);
             String hora = toStringHoraCLT(asistente.getHoraRetraso());
-            listaEmpleados = listaEmpleados+"\n- "+(asistente.getEmpleado().getNombreCompleto()+" ["+hora+"]");
+            listaEmpleados = listaEmpleados+"\n- "+(asistente.getEmpleado().toString()+" ["+hora+"]");
         }
         return listaEmpleados;
     }
@@ -47,7 +47,7 @@ public class Informe {
         for (int i = 0; i < listaInvitados.size(); i++) {
             Invitacion invitado = listaInvitados.get(i);
             String hora = toStringHoraCLT(invitado.getHora());
-            listaEmpleados = listaEmpleados+"\n- "+(invitado.getEmpleado().getNombreCompleto()+" ["+hora+"]");
+            listaEmpleados = listaEmpleados+"\n- "+(invitado.getEmpleado().toString()+" ["+hora+"]");
         }
         return listaEmpleados;
     }
@@ -81,24 +81,19 @@ public class Informe {
     public void crearInformeReunion(Reunion reunion, String nombre) throws IOException {
         crearArchivoTXT(nombre);
         try {
-            String sFecha = "Fecha: " + reunion.getFecha().toString();
-            String sHoraPrev = "Hora Prevista: " + toStringHoraCLT(reunion.getHoraPrevista());
-            String sDuraPrev = "Duración Prevista: " + reunion.getDuracionPrevista().getSeconds() / 60 + " minutos";
-            String sHoraIni = "Hora de Inicio: " + toStringHoraCLT(reunion.getHoraInicio());
-            String sHoraFin = "Hora de finalización: " + toStringHoraCLT(reunion.getHoraFin());
-            String sDura = "Duración: " + reunion.calcularTiempoReal() * 60 + " minutos";
-            String sOrg = "Organizador: " + reunion.getOrganizador().getNombreCompleto();
-            String sAsis = "Asistencias [Hora envio invitación]:" + listaAsistenciaNombres(reunion.obtenerAsistencias());
-            String sRet = "Retrasos [Hora de llegada]:" + listaRetrasosNombres(reunion.obtenerRetrasos());
-            String sAus = "Ausencias [Hora envio invitación]:" + listaInvitadosNombres(reunion.obtenerAusencias());
+            String txtPrev = "Fecha: " + reunion.getFecha().toString()  + "\nHora Prevista: " + toStringHoraCLT(reunion.getHoraPrevista());
+            txtPrev = txtPrev + "\nDuración Prevista: " + reunion.getDuracionPrevista().getSeconds() / 60 + " minutos";
+            String txtDatos = "Hora de Inicio: " + toStringHoraCLT(reunion.getHoraInicio()) + "\nHora de finalización: " + toStringHoraCLT(reunion.getHoraFin());
+            txtDatos = txtDatos + "\nDuración: " + reunion.calcularTiempoReal() * 60 + " minutos";
+            txtDatos = txtDatos + "\nTipo de Reunión: " + reunion.getTipo()  + "\nOrganizador: " + reunion.getOrganizador().toString();
+            String txtPart = "Asistencias [Hora envio invitación]:" + listaAsistenciaNombres(reunion.obtenerAsistencias());
+            txtPart = txtPart + "\n\nRetrasos [Hora de llegada]:" + listaRetrasosNombres(reunion.obtenerRetrasos());
+            txtPart = txtPart + "\n\nAusencias [Hora envio invitación]:" + listaInvitadosNombres(reunion.obtenerAusencias());
 
             FileWriter myWriter = new FileWriter(nombre+".txt");
-            myWriter.write(sFecha+"\n"+sHoraPrev+"\n"+sDuraPrev+"\n\n");
-            myWriter.write(sHoraIni+"\n"+sHoraFin+"\n"+sDura+"\n");
-            myWriter.write("Tipo de Reunión: " + reunion.getTipo()+"\n"+sOrg+"\n"+reunion.getTipoLugar()+": "+reunion.getLugar()+"\n\n");
-            myWriter.write(sAsis+"\n\n"+sRet+"\n\n"+sAus+"\n\n");
-            myWriter.write("Asistencia Total: "+reunion.obtenerTotalAsistencia()+"/"+reunion.obtenerTotalInvitacion());
-            myWriter.write(" | "+reunion.obtenerPorcentajeAsistencia()+"%\n\n");
+            myWriter.write(txtPrev+"\n\n"+txtDatos+"\n"+reunion.getTipoLugar()+": "+reunion.getLugar()+"\n\n");
+            myWriter.write(txtPart+"\n\nAsistencia Total: "+reunion.obtenerTotalAsistencia()+"/");
+            myWriter.write(reunion.obtenerTotalInvitacion()+" | "+reunion.obtenerPorcentajeAsistencia()+"%\n\n");
             myWriter.write("Notas de la Reunión:"+reunion.getNota().getContenido());
             myWriter.close();
             System.out.println("Informe de la reunión creado en: "+nombre+".txt");

@@ -71,6 +71,6 @@ public class Empleado implements Invitable {
     /** Método para obtener los datos internos de la clase Empleado
      * @return Un texto con la información del empleado */
     public String toString() {
-        return nombre+" "+apellidos+" "+id+" "+correo;
+        return nombre+" "+apellidos+" | "+id+" | "+correo;
     }
 }

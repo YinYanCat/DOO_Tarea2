@@ -1,26 +1,26 @@
-Fecha: Wed May 15 18:29:30 CLT 2024
-Hora Prevista: 18:29:30.063258600
+Fecha: Wed May 15 18:45:20 CLT 2024
+Hora Prevista: 18:45:20.835724300
 Duración Prevista: 60 minutos
 
-Hora de Inicio: 18:29:30.066252100
-Hora de finalización: 19:29:30.067248100
+Hora de Inicio: 18:45:20.841777800
+Hora de finalización: 19:45:20.841777800
 Duración: 60.0 minutos
 Tipo de Reunión: TECNICA
-Organizador: Juan Perez
+Organizador: Juan Perez | 1 | jperez@correo.com
 Enlace: www.reunion.com
 
 Asistencias [Hora envio invitación]:
-- Roberto Gomez [18:29:30.066252100]
-- Selena Rolecci [18:29:30.066252100]
-- Maria Toncillo [18:29:30.066252100]
+- Roberto Gomez | 2 | rgomez@correo.com [18:45:20.840780500]
+- Selena Rolecci | 4 | srolecci@correo.com [18:45:20.840780500]
+- Maria Toncillo | 3 | mtoncillo@correo.com [18:45:20.840780500]
 
 Retrasos [Hora de llegada]:
-- Selena Rolecci [18:29:30.067248100]
-- Maria Toncillo [18:29:30.067248100]
+- Selena Rolecci | 4 | srolecci@correo.com [18:45:20.841777800]
+- Maria Toncillo | 3 | mtoncillo@correo.com [18:45:20.841777800]
 
 Ausencias [Hora envio invitación]:
-- Juan Perez [18:29:30.066252100]
-- Carlos Saavedra [18:29:30.066252100]
+- Juan Perez | 1 | jperez@correo.com [18:45:20.840780500]
+- Carlos Saavedra | 5 | csaveedra@correo.com [18:45:20.840780500]
 
 Asistencia Total: 3/5 | 60.0%
 
