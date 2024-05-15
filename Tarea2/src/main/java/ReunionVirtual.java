@@ -37,6 +37,7 @@ public class ReunionVirtual extends Reunion {
 
     /** Método para obtener los datos internos de la clase ReunionVirtual
      * @return Un texto con la información de la reunión y su enlace */
+    @Override
     public String toString() {
         return super.toString()+"\nEnlace: "+enlace;
     }
