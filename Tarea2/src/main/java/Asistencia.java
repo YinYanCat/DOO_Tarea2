@@ -30,4 +30,11 @@ public class Asistencia {
     public Instant getHoraInvitacion() {
         return horaInvitacion;
     }
+
+    /** Método para obtener los datos internos de la clase Asistencia
+     * @return Un texto con la información del asistente y la hora donde se envió su invitación */
+    public String toString() {
+        Informe cnv = new Informe();
+        return "Empleado: "+asistente.toString()+" | Hora de invitación: "+cnv.toStringHoraCLT(horaInvitacion);
+    }
 }

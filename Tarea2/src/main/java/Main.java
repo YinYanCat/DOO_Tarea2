@@ -33,6 +33,7 @@ public class Main {
             r1.agregarNota("Juan se cayó, no va a llegar.");
             r1.llegadaEmpleado(e3);
             r1.finalizar(Instant.now().plus(1, ChronoUnit.HOURS));
+            System.out.println(r1.toString());
             inf.crearInformeReunion(r1, "ejemplo");
         } catch (Exception e) {
             System.out.println(e.getMessage());

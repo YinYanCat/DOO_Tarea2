@@ -22,4 +22,11 @@ public class Retraso extends Asistencia {
     public Instant getHoraRetraso() {
         return horaLlegada;
     }
+
+    /** Método para obtener los datos internos de la clase Retraso
+     * @return Un texto con la información del asistente y la hora donde se envió su invitación y la hora de llegada */
+    public String toString() {
+        Informe cnv = new Informe();
+        return super.toString()+" | Hora de llegada: "+cnv.toStringHoraCLT(horaLlegada);
+    }
 }

@@ -33,4 +33,10 @@ public class ReunionPresencial extends Reunion {
     public String getTipoLugar() {
         return "Sala";
     }
+
+    /** Método para obtener los datos internos de la clase ReunionPresencial
+     * @return Un texto con la información de la reunión y su sala */
+    public String toString() {
+        return super.toString()+"\nSala: "+sala;
+    }
 }

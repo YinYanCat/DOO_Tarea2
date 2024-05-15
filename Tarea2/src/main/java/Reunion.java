@@ -232,4 +232,23 @@ public abstract class Reunion {
     /** Método abstracto para obtener el tipo de lugar donde se realizará la reunión
      * @return El texto donde especifica el tipo de lugar, sala o enlace "*/
     public abstract String getTipoLugar();
+
+    /** Método para obtener los datos internos de la clase Reunion
+     * @return Un texto con la fecha, hora y duración previstas, la horas de inicio y fin,
+     * los asistentes y austentes, tipo, organizador y notas de la reunión */
+    public String toString() {
+        String empleadosInfo = "Asistentes:\n";
+        Informe cnv = new Informe();
+        for(int i=0; i<listaAsistencia.size(); i++) {
+            empleadosInfo = empleadosInfo+listaAsistencia.get(i).toString()+"\n";
+        }
+        empleadosInfo = empleadosInfo+"Ausentes:\n";
+        for(int i=0; i<listaInvitacion.size(); i++) {
+            empleadosInfo = empleadosInfo+listaInvitacion.get(i).toString()+"\n";
+        }
+        String prev = "\nPrevisto: "+cnv.toStringHoraCLT(horaPrevista)+" | "+duracionPrevista;
+        String horas = "\nHoras: "+cnv.toStringHoraCLT(horaInicio)+" - "+cnv.toStringHoraCLT(horaFin);
+        String datos = "\nTipo: "+tipo+"\nOrganizador: "+organizador.toString();
+        return "Fecha: "+fecha+prev+horas+datos+empleadosInfo+"Notas:\n"+notaReunion.toString();
+    }
 }

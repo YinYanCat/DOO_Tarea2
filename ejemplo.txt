@@ -1,29 +1,29 @@
-Fecha: Wed May 15 17:39:31 CLT 2024
-Hora Prevista: 17:39:31.513816
+Fecha: Wed May 15 18:29:30 CLT 2024
+Hora Prevista: 18:29:30.063258600
 Duración Prevista: 60 minutos
 
-Hora de Inicio: 17:39:31.517805600
-Hora de finalización: 18:39:31.517805600
+Hora de Inicio: 18:29:30.066252100
+Hora de finalización: 19:29:30.067248100
 Duración: 60.0 minutos
 Tipo de Reunión: TECNICA
 Organizador: Juan Perez
 Enlace: www.reunion.com
 
 Asistencias [Hora envio invitación]:
-- Roberto Gomez [17:39:31.516808600]
-- Selena Rolecci [17:39:31.516808600]
-- Maria Toncillo [17:39:31.516808600]
+- Roberto Gomez [18:29:30.066252100]
+- Selena Rolecci [18:29:30.066252100]
+- Maria Toncillo [18:29:30.066252100]
 
 Retrasos [Hora de llegada]:
-- Selena Rolecci [17:39:31.517805600]
-- Maria Toncillo [17:39:31.517805600]
+- Selena Rolecci [18:29:30.067248100]
+- Maria Toncillo [18:29:30.067248100]
 
 Ausencias [Hora envio invitación]:
-- Juan Perez [17:39:31.516808600]
-- Carlos Saavedra [17:39:31.516808600]
+- Juan Perez [18:29:30.066252100]
+- Carlos Saavedra [18:29:30.066252100]
 
 Asistencia Total: 3/5 | 60.0%
 
 Notas de la Reunión:
-Roberto va a iniciar la reunión.
-Juan se cayó, no va a llegar.
+- Roberto va a iniciar la reunión.
+- Juan se cayó, no va a llegar.

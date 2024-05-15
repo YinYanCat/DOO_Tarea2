@@ -51,4 +51,14 @@ public class Departamento implements Invitable {
     public int getCantidadEmpleados(){
         return listaEmpleados.size();
     }
+
+    /** Método para obtener los datos internos de la clase Departamento
+     * @return Un texto con la información del departamento y los empleados del mismo */
+    public String toString() {
+        String empleadosInfo = "";
+        for(int i=0; i<listaEmpleados.size(); i++) {
+            empleadosInfo = empleadosInfo+listaEmpleados.get(i).toString()+"\n";
+        }
+        return "Nombre: "+nombre+"\nEmpleados:\n"+empleadosInfo;
+    }
 }

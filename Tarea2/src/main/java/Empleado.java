@@ -67,4 +67,10 @@ public class Empleado implements Invitable {
     public String getCorreo() {
         return correo;
     }
+
+    /** Método para obtener los datos internos de la clase Empleado
+     * @return Un texto con la información del empleado */
+    public String toString() {
+        return nombre+" "+apellidos+" "+id+" "+correo;
+    }
 }

@@ -34,4 +34,10 @@ public class ReunionVirtual extends Reunion {
     public String getTipoLugar() {
         return "Enlace";
     }
+
+    /** Método para obtener los datos internos de la clase ReunionVirtual
+     * @return Un texto con la información de la reunión y su enlace */
+    public String toString() {
+        return super.toString()+"\nEnlace: "+enlace;
+    }
 }
