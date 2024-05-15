@@ -12,6 +12,10 @@ import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/** Tests unitarios para las clases reunion, usa en este caso ReunionVirtual para los test
+ * @author Chloe Yañez Lavin
+ * @author Emily Osvaldo Gaete Bobadilla */
+
 public class ReunionTest {
     private ReunionVirtual reunionVirtual;
     private Empleado organizador;
@@ -19,14 +23,14 @@ public class ReunionTest {
     private Empleado e2;
     private Empleado e3;
     private Empleado e4;
-    Departamento d1;
-    Departamento d2;
 
+    /** SetUp para cada test de Reunion
+     * Crea una reunion virtual y asigna los invitdos, deja a un empledo sin invitar */
     @BeforeEach
     void setUp() {
-        d1 = new Departamento("Analistas");
-        d2 = new Departamento("Tecnicos");
-        organizador = new Empleado("Juan","Valenzuela","1","jvalenzuela@correo.com", d1);
+        Departamento d1 = new Departamento("Analistas");
+        Departamento d2 = new Departamento("Tecnicos");
+        organizador = new Empleado("Diego","Valenzuela","1","dvalenzuela@correo.com", d1);
         e1 = new Empleado("Juan", "Perez", "2", "jperez@correo.com", d1);
         e2 = new Empleado("Roberto", "Gomez", "3", "rgomez@correo.com", d2);
         e3 = new Empleado("Maria", "Toncillo", "4", "mtoncillo@correo.com", d2);
@@ -48,26 +52,37 @@ public class ReunionTest {
     void tearDown(){
 
     }
+
+    /** test de asistencia de 4 empleados
+     * Prueba que la lista de asistencia sea no nula y que tenga un tamaño de 4 */
     @Test
     @DisplayName("Test asistencias")
     void obtenerAsistencias() throws Exception {
-        ArrayList<Asistencia> asistencias = reunionVirtual.obtenerAsistencias();
+        reunionVirtual.llegadaEmpleado(organizador);
         reunionVirtual.llegadaEmpleado(e1);
+        reunionVirtual.llegadaEmpleado(e2);
+        reunionVirtual.llegadaEmpleado(e3);
+        ArrayList<Asistencia> asistencias = reunionVirtual.obtenerAsistencias();
         assertNotNull(asistencias);
+        assertEquals(4,asistencias.size());
 
     }
 
+    /** test de ausencia de 1 empleado
+     * Prueba que la lista de ausencia sea no nula y que tenga un tamaño de 1 */
     @Test
     @DisplayName("Test ausencias")
     void obtenerAusencias() throws Exception {
         assertNotNull(reunionVirtual.obtenerAusencias());
         reunionVirtual.llegadaEmpleado(e1);
         reunionVirtual.llegadaEmpleado(e2);
-        reunionVirtual.llegadaEmpleado(e3);
         reunionVirtual.llegadaEmpleado(organizador);
-        assertEquals(0,reunionVirtual.obtenerAusencias().size());
+        assertEquals(1,reunionVirtual.obtenerAusencias().size());
     }
 
+    /** test de retraso de 3 empleados
+     * Prueba que la lista de retraso este vacia antes de empezar la reunión
+     * Luego de iniciar se pueba que la lista de retraso sea de tamaño 3*/
     @Test
     @DisplayName("Test retrasos")
     void obtenerRetrasos() throws Exception {
@@ -77,11 +92,14 @@ public class ReunionTest {
         reunionVirtual.llegadaEmpleado(e2);
         reunionVirtual.llegadaEmpleado(e3);
         reunionVirtual.llegadaEmpleado(organizador);
-        assertEquals(4,reunionVirtual.obtenerRetrasos().size());
+        assertEquals(3,reunionVirtual.obtenerRetrasos().size());
     }
 
+    /** test de llegada de empleados
+     * Prueba las excepciones que se pueden obtener
+     * Se prueba que se obtengan las excepciones para empleados no invitados, invitado ya en la reunión y la llegada de un invitado después de finalizar la reunion*/
     @Test
-    @DisplayName("Test llegada no invitado")
+    @DisplayName("Test Exceptions llegada")
     void llegada(){
         try {
             reunionVirtual.llegadaEmpleado(e4);
