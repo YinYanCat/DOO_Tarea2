@@ -28,7 +28,7 @@ public abstract class Reunion {
     private Nota notaReunion;
 
     /** El tipo de reunión */
-    private tipoReunion tipo;
+    private TipoReunion tipo;
 
     /** Lista de invitados a la reunión (no incluye asistentes) */
     private ArrayList<Invitacion> listaInvitacion;
@@ -46,7 +46,7 @@ public abstract class Reunion {
      * @param duracion La duración prevista de la reunión
      * @param org El empleado organizador de la reunión
      * @param miTipo El tipo de reunión */
-    public Reunion(Date fecha, Instant hora, Duration duracion, Empleado org, tipoReunion miTipo) {
+    public Reunion(Date fecha, Instant hora, Duration duracion, Empleado org, TipoReunion miTipo) {
         notaReunion=new Nota();
         tipo=miTipo;
         this.fecha = fecha;
@@ -215,7 +215,7 @@ public abstract class Reunion {
 
     /** Método para obtener el tipo de reunión
      * @return El tipo de reunión */
-    public tipoReunion getTipo() {
+    public TipoReunion getTipo() {
         return tipo;
     }
 

@@ -21,7 +21,7 @@ public class Main {
         Empleado e5 = new Empleado("Carlos","Saavedra","5","csaveedra@correo.com", d2);
 
         Instant horaPrevista = Instant.now();
-        Reunion r1 = new ReunionVirtual(new Date(), horaPrevista, Duration.ofHours(1), e1, tipoReunion.TECNICA, "www.reunion.com");
+        Reunion r1 = new ReunionVirtual(new Date(), horaPrevista, Duration.ofHours(1), e1, TipoReunion.TECNICA, "www.reunion.com");
 
         try {
             d1.invitar(r1);

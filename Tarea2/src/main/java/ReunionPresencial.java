@@ -18,7 +18,7 @@ public class ReunionPresencial extends Reunion {
      * @param org El empleado organizador de la reunión presencial
      * @param miTipo El tipo de reunión presencial
      * @param sala La sala de la reunión presencial */
-    public ReunionPresencial(Date fecha, Instant hora, Duration duracion, Empleado org, tipoReunion miTipo, String sala) {
+    public ReunionPresencial(Date fecha, Instant hora, Duration duracion, Empleado org, TipoReunion miTipo, String sala) {
         super(fecha, hora, duracion, org, miTipo);
         this.sala=sala;
     }

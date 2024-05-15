@@ -3,7 +3,7 @@
  * @author Chloe Yañez Lavin
  * @author Emily Osvaldo Gaete Bobadilla */
 
-public enum tipoReunion {
+public enum TipoReunion {
     TECNICA,
     MARKETING,
     OTRO;

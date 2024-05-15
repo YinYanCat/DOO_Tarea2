@@ -1,4 +1,3 @@
-
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -36,7 +35,7 @@ public class ReunionTest {
         e3 = new Empleado("Maria", "Toncillo", "4", "mtoncillo@correo.com", d2);
         e4 = new Empleado("Selena", "Rolecci", "5", "srolecci@correo.com", d2);
 
-        reunionVirtual = new ReunionVirtual(new Date(), Instant.now(), Duration.ofHours(1), organizador, tipoReunion.TECNICA, "www.reunion.com");
+        reunionVirtual = new ReunionVirtual(new Date(), Instant.now(), Duration.ofHours(1), organizador, TipoReunion.TECNICA, "www.reunion.com");
 
         try {
             reunionVirtual.agregarInvitado(e1);
@@ -129,7 +128,5 @@ public class ReunionTest {
             String actualMessage = e.getMessage();
             assertTrue(actualMessage.contains(expectedMessage));
         }
-
     }
-
 }
