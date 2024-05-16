@@ -94,12 +94,10 @@ public class ReunionTest {
         assertEquals(3,reunionVirtual.obtenerRetrasos().size());
     }
 
-    /** Test de llegada de empleados
-     * Prueba las excepciones que se pueden obtener en la reunión
-     * Se prueba que se obtengan las excepciones para empleados no invitados, invitado ya en la reunión y la llegada de un invitado después de finalizar la reunión */
+    /** Test de llegada de no invitado */
     @Test
-    @DisplayName("Test Exceptions llegada")
-    void llegada(){
+    @DisplayName("Test llegada de no invitado")
+    void llegadaNoInvitado(){
         try {
             reunionVirtual.llegadaEmpleado(e4);
         }catch (Exception e) {
@@ -109,22 +107,34 @@ public class ReunionTest {
 
             assertTrue(actualMessage.contains(expectedMessage));
         }
+    }
+
+    /** Test de llegada de un empleado después de finalizar la reunión */
+    @Test
+    @DisplayName("Test llegada de asistente con reunión finalizada")
+    void llegadaReunionTerminada(){
+
+        try{
+            reunionVirtual.finalizar(Instant.now().plus(1, ChronoUnit.HOURS));
+            reunionVirtual.llegadaEmpleado(e2);
+
+        }catch(Exception e){
+            String expectedMessage = "Llegada a una reunión ya finalizada";
+            String actualMessage = e.getMessage();
+            assertTrue(actualMessage.contains(expectedMessage));
+        }
+    }
+
+    /** Test de llegada de empleados ya en la reunión */
+    @Test
+    @DisplayName("Test llegada de asistente ya presente")
+    void llegadaAsistentePresente(){
 
         try{
             reunionVirtual.llegadaEmpleado(e2);
             reunionVirtual.llegadaEmpleado(e2);
         }catch(Exception e){
             String expectedMessage = "Asistente ya en la reunión";
-            String actualMessage = e.getMessage();
-            assertTrue(actualMessage.contains(expectedMessage));
-        }
-
-        try{
-            reunionVirtual.finalizar(Instant.now().plus(1, ChronoUnit.HOURS));
-            reunionVirtual.llegadaEmpleado(e2);
-            
-        }catch(Exception e){
-            String expectedMessage = "Llegada a una reunión ya finalizada";
             String actualMessage = e.getMessage();
             assertTrue(actualMessage.contains(expectedMessage));
         }
