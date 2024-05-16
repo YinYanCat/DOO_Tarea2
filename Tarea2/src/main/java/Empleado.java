@@ -5,14 +5,14 @@
 
 public class Empleado implements Invitable {
 
-    /** ID (Identificador) del empleado */
-    private String id;
+    /** Nombre del empleado */
+    private String nombre;
 
     /** Apellidos del empleado */
     private String apellidos;
 
-    /** Nombre del empleado */
-    private String nombre;
+    /** ID (Identificador) del empleado */
+    private String id;
 
     /** Correo electrónico del empleado*/
     private String correo;
@@ -48,12 +48,6 @@ public class Empleado implements Invitable {
      * @return Los apellidos del empleado */
     public String getApellidos() {
         return apellidos;
-    }
-
-    /** Método para obtener el nombre y los apellidos del empleado
-     * @return El nombre completo del empleado */
-    public String getNombreCompleto() {
-        return nombre+" "+apellidos;
     }
 
     /** Método para obtener el ID (Identificador) del empleado
