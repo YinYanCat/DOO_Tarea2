@@ -1,0 +1,31 @@
+Informe de Reunión
+
+Fecha: Wed May 15 22:18:40 CLT 2024
+Hora Prevista: 22:18:40.307339900
+Duración Prevista: 60 minutos
+
+Hora de Inicio: 22:18:40.312094100
+Hora de finalización: 23:18:40.313179500
+Duración: 60.0 minutos
+Tipo de Reunión: TECNICA
+Organizador: Juan Perez | 1 | jperez@correo.com
+Enlace: www.reunion.com
+
+Asistencias [Hora envio invitación]:
+- Roberto Gomez | 2 | rgomez@correo.com [22:18:40.311590500]
+- Selena Rolecci | 4 | srolecci@correo.com [22:18:40.311590500]
+- Maria Toncillo | 3 | mtoncillo@correo.com [22:18:40.311590500]
+
+Retrasos [Hora de llegada]:
+- Selena Rolecci | 4 | srolecci@correo.com [22:18:40.313179500]
+- Maria Toncillo | 3 | mtoncillo@correo.com [22:18:40.313179500]
+
+Ausencias [Hora envio invitación]:
+- Juan Perez | 1 | jperez@correo.com [22:18:40.310333400]
+- Carlos Saavedra | 5 | csaveedra@correo.com [22:18:40.311590500]
+
+Asistencia Total: 3/5 | 60.0%
+
+Notas de la Reunión:
+- Roberto va a iniciar la reunión.
+- Juan se cayó, no va a llegar.

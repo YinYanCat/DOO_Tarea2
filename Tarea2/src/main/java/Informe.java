@@ -91,7 +91,7 @@ public class Informe {
             txtPart = txtPart + "\n\nAusencias [Hora envio invitación]:" + listaInvitadosNombres(reunion.obtenerAusencias());
 
             FileWriter myWriter = new FileWriter(nombre+".txt");
-            myWriter.write(txtPrev+"\n\n"+txtDatos+"\n"+reunion.getTipoLugar()+": "+reunion.getLugar()+"\n\n");
+            myWriter.write("Informe de Reunión\n\n"+txtPrev+"\n\n"+txtDatos+"\n"+reunion.getTipoLugar()+": "+reunion.getLugar()+"\n\n");
             myWriter.write(txtPart+"\n\nAsistencia Total: "+reunion.obtenerTotalAsistencia()+"/");
             myWriter.write(reunion.obtenerTotalInvitacion()+" | "+reunion.obtenerPorcentajeAsistencia()+"%\n\n");
             myWriter.write("Notas de la Reunión:"+reunion.getNota().getContenido());
